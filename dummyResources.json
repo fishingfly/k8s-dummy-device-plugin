@@ -1,18 +1,80 @@
-[
-    {
-        "name": "dev_1",
-        "state": "Up"
-    },
-    {
-        "name": "dev_2",
-        "state": "Up"
-    },
-    {
-        "name": "dev_3",
-        "state": "Up"
-    },
-    {
-        "name": "dev_4",
-        "state": "Up"
-    }
-]
+{
+    "plugins": [
+        {
+            "name": "test-gpu",
+            "resourceName": "nvidia.com/gpu",
+            "devices": [
+                {
+                    "name": "dev_1",
+                    "state": "Up"
+                },
+                {
+                    "name": "dev_2",
+                    "state": "Up"
+                },
+                {
+                    "name": "dev_3",
+                    "state": "Up"
+                },
+                {
+                    "name": "dev_4",
+                    "state": "Up"
+                },
+                {
+                    "name": "dev_5",
+                    "state": "Up"
+                },
+                {
+                    "name": "dev_6",
+                    "state": "Up"
+                },
+                {
+                    "name": "dev_7",
+                    "state": "Up"
+                },
+                {
+                    "name": "dev_8",
+                    "state": "Up"
+                }
+            ]
+        },
+        {
+            "name": "test-nic",
+            "resourceName": "openshift.io/roce",
+            "devices": [
+                {
+                    "name": "dev_1",
+                    "state": "Up"
+                },
+                {
+                    "name": "dev_2",
+                    "state": "Up"
+                },
+                {
+                    "name": "dev_3",
+                    "state": "Up"
+                },
+                {
+                    "name": "dev_4",
+                    "state": "Up"
+                },
+                {
+                    "name": "dev_5",
+                    "state": "Up"
+                },
+                {
+                    "name": "dev_6",
+                    "state": "Up"
+                },
+                {
+                    "name": "dev_7",
+                    "state": "Up"
+                },
+                {
+                    "name": "dev_8",
+                    "state": "Up"
+                }
+            ]
+        }
+    ]
+}
