@@ -5,7 +5,10 @@ metadata:
 spec:
   containers:
     - name: demo-container-1
-      image: karlherler/pause 
+      image: "ubuntu:20.04"
+      command: ["sleep"]
+      args: ["infinity"]
       resources:
         limits:
-          dummy/dummyDev: 2
+          "nvidia.com/gpu": 1
+          "openshift.io/roce": 1

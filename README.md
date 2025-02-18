@@ -7,7 +7,7 @@ This is a plugin that's used for testing and exploring [Kubernetes Device Plugin
 In essence, it works as a kind of echo device. One specifies the (albeit pretend) devices in a JSON file, and the plugin operates on those, and allocates the devices to containers that request them -- it does this by setting those devices into environment variables in those containers.
 
 ### Update 27 January 2021
-creates `nvidia.com/gpu` device for testing. 
+creates `nvidia.com/gpu` device for testing.
 `examples/daemonset.yml` contains example deployment with config map
 Specify number of GPUs in config map
 Set label `fake-device-plugin: 'true'` on nodes to activate
@@ -38,8 +38,9 @@ $ kubectl create -f ./sample_pod.yaml
 You may then see that the "devices" were created as environment variables.
 
 ```
-$ kubectl exec -it dummy-pod -- /bin/sh -c "printenv" | grep DUMMY_DEVICES
-DUMMY_DEVICES=dev_3,dev_4
+$ kubectl exec -it dummy-pod env | grep DUMMY_DEVICES
+NVIDIA.COM_GPU_DUMMY_DEVICES=dev_7
+OPENSHIFT.IO_ROCE_DUMMY_DEVICES=dev_5
 ```
 
 ## Configuration
@@ -47,3 +48,8 @@ DUMMY_DEVICES=dev_3,dev_4
 Configuration of the "pretend" devices are in the `./dummyResources.json` file.
 
 More configuration to come.
+
+## Build image
+```
+docker build -t registry.cn-hangzhou.aliyuncs.com/fishingfly/multi-fake-device-plugin:0.0.1 .
+```

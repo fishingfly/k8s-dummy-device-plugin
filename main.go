@@ -30,7 +30,7 @@ func main() {
 			Devices:      make(map[string]*pluginapi.Device),
 			Socket:       pluginapi.DevicePluginPath + fmt.Sprintf("%s.sock", p.Name),
 			Health:       make(chan *pluginapi.Device),
-			ResoueceName: p.ResourceName,
+			ResourceName: p.ResourceName,
 		}
 		for _, dev := range p.Devices {
 			newdev := pluginapi.Device{ID: dev.Name, Health: pluginapi.Healthy}

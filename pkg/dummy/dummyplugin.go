@@ -20,7 +20,7 @@ type DummyDeviceManager struct {
 	Socket       string
 	Server       *grpc.Server
 	Health       chan *pluginapi.Device
-	ResoueceName string
+	ResourceName string
 }
 
 // Init function for our dummy devices
@@ -46,7 +46,7 @@ func (ddm *DummyDeviceManager) Register() error {
 		// PATH = path.Join(DevicePluginPath, endpoint)
 		Endpoint: filepath.Base(ddm.Socket),
 		// Schedulable resource name.
-		ResourceName: ddm.ResoueceName,
+		ResourceName: ddm.ResourceName,
 	}
 
 	_, err = client.Register(context.Background(), reqt)
@@ -163,7 +163,7 @@ func (ddm *DummyDeviceManager) Allocate(ctx context.Context, reqs *pluginapi.All
 		}
 		glog.Info("Allocated interfaces ", req.DevicesIDs)
 		response := pluginapi.ContainerAllocateResponse{
-			Envs: map[string]string{"DUMMY_DEVICES": strings.Join(req.DevicesIDs, ",")},
+			Envs: map[string]string{fmt.Sprintf("%s_DUMMY_DEVICES", strings.ReplaceAll(strings.ToUpper(ddm.ResourceName), "/", "_")): strings.Join(req.DevicesIDs, ",")},
 		}
 		responses.ContainerResponses = append(responses.ContainerResponses, &response)
 	}
